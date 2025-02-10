@@ -31,9 +31,16 @@ def caesar_cipher(text, shift, mode="encode"):
 
 # Substitution cipher (Difficult)
 def create_substitution_mapping(key):
-    alphabet = string.ascii_lowercase
-    return {alphabet[i]: key[i] for i in range(26)}, {key[i]: alphabet[i] for i in range(26)}
+    # Define a variable 'alphabet' containing all lowercase letters (a to z)
+    alphabet = string.ascii_lowercase 
+    # Create a dictionary where each letter of 'alphabet' maps to the corresponding letter in 'key'
+    # This is the first substitution mapping (alphabet -> key)
+    # It loops through each letter in 'alphabet' and pairs it with the same index in 'key'
+    forward_mapping = {alphabet[i]: key[i] for i in range(26)}
+    reverse_mapping = {key[i]: alphabet[i] for i in range(26)}
+    return forward_mapping, reverse_mapping
 
+# print("mapping_",create_substitution_mapping("keywordabcfghijlmnpqstuvxz"))
 def substitution_cipher(text, key, mode="encode"):
     """
     A function to encode or decode text using a substitution cipher.
